@@ -12,9 +12,10 @@ options = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=service, options=options)
 
 if __name__ == "__main__":
-  scraper = SeasonScraper(driver, 2023)
-  games = scraper.scrapeSeason()
-  scraper.saveToCsv(games)
-
+  for season in range(2020, 2024):
+    scraper = SeasonScraper(driver, season)
+    games = scraper.scrapeSeason()
+    scraper.saveToCsv(games)
+  driver.quit()
   # for index, game in enumerate(games):
   #   print(f"{index+1}. {game}")

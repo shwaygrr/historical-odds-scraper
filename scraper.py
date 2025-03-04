@@ -20,9 +20,6 @@ class SeasonScraper:
 		self.start_year = start_year
 		self.end_year = start_year+1
 		self.date_regex = r"^\d{2} [A-Za-z]{3} \d{4}$"
-		
-	def __del__(self):
-		self.driver.quit()
 
 	def rejectCookies(self):
 		try:
@@ -112,8 +109,7 @@ class SeasonScraper:
 				if game is not None:
 					all_games.append(game)	
 			
-			# next_button = self.findNextButton()
-			next_button = None
+			next_button = self.findNextButton()
 			if next_button is None:
 				print(f"Finished scraping for {self.start_year}/{self.end_year}.")
 				break

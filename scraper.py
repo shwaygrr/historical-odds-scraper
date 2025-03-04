@@ -1,8 +1,6 @@
-from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 import time
@@ -128,85 +126,3 @@ class SeasonScraper:
 		df.to_csv(filename, index=False)
 		print(f"Data saved to {filename}")
 		return df
-
-
-
-
-
-
-
-
-
-
-
-			# game_row = 
-
-			# for game in game_rows:
-			#     try:
-			#         date =   
-			#         teams = game.find_elements(By.CLASS_NAME, "leading-5")[0].text
-			#         score = game.find_element(By.CLASS_NAME, "score").text
-			#         all_games.append([year, teams, score])
-			#     except Exception:
-			#         continue
-		# Skip if data is missing
-
-			# Find next page button and click it
-			# next_button = self.findNextButton()
-			# if next_button is None:
-			# 	print(f"Finished scraping for {self.start_year}/{end_year}.")
-			# 	break
-			# else:
-			# 	ActionChains(self.driver).move_to_element(next_button).click().perform()
-			# 	time.sleep(3)
-
-
-# Scrape data from 2020 to 2024
-
-# all_data.extend(scrapeSeason(year))
-# Save to CSV
-# df = pd.DataFrame(all_data, columns=["Year", "Teams", "Score"])
-# print(df)
-# df.to_csv("nba_oddsportal_data.csv", index=False)
-# print("Data successfully saved as nba_oddsportal_data.csv!")
-
-'''
-1. go to page
-2. scrape table
-   a. get date
-   b. get games and data for games
-   c. goto a if next games exist
-3. click next
-4. goto 1 if next exists 
-'''
-
-
-
-
-
-
-
-
-
-	# def scrapeSeasonTest(self):
-	# 	base_url = f"https://www.oddsportal.com/basketball/usa/nba-{self.start_year}-{self.end_year}/results/"
-	# 	self.driver.get(base_url)
-
-	# 	self.rejectCookies()
-
-	# 	self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-	# 	time.sleep(2)
-
-	# 	event_rows = WebDriverWait(self.driver, 10).until(
-  #   	EC.visibility_of_all_elements_located((By.CLASS_NAME, "eventRow"))
-	# 	)
-		
-	# 	# print(len(event_rows))
-
-	# 	all_games = []
-
-	# 	for event_row in event_rows:
-	# 		date = self.getDate(event_row)
-	# 		if date is not None:
-	# 			all_games.append(date)
-	# 	return all_games

@@ -63,12 +63,11 @@ class SeasonScraper:
 		scores = [int(num.text) for num in game_row.find_elements(By.CSS_SELECTOR, "div.min-mt\\:\\!flex.hidden")]
 
 		if len(team_els) != 2 or len(odds) != 2 or len(scores) != 2:
+			print("Error: Game item length is not 2")
 			print(date)
 			print(team_els)
 			print(odds)
 			print(scores)
-			print("Error: Game item length is not 2")
-			self.__del__
 
 		game_data = Game(
 			date=date,

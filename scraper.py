@@ -8,6 +8,11 @@ import pandas as pd
 import time
 import re
 from game import Game
+from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 class SeasonScraper:
 	def __init__(self, driver, start_year):
@@ -107,7 +112,8 @@ class SeasonScraper:
 				if game is not None:
 					all_games.append(game)	
 			
-			next_button = self.findNextButton()
+			# next_button = self.findNextButton()
+			next_button = None
 			if next_button is None:
 				print(f"Finished scraping for {self.start_year}/{self.end_year}.")
 				break
@@ -115,9 +121,9 @@ class SeasonScraper:
 				ActionChains(self.driver).move_to_element(next_button).click().perform()
 		return all_games
 	
-	def save_to_csv(self, games, filename=None):
+	def saveToCsv(self, games, filename=None):
 		if not filename:
-			filename = f"nba_odds_{self.start_year}_{self.end_year}.csv"
+			filename = f"{Path(os.getenv("CSV_PATH"))}/{self.start_year}_{self.end_year}.csv"
 		
 		# Convert list of Game objects to list of dictionaries
 		game_dicts = [game.__dict__ for game in games]

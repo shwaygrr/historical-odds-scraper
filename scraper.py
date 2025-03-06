@@ -19,6 +19,9 @@ class SeasonScraper:
 		self.end_year = start_year+1
 		self.date_regex = r"^\d{2} [A-Za-z]{3} \d{4}$"
 
+	def quit(self):
+		self.driver.quit()
+		
 	def rejectCookies(self):
 		try:
 			reject_button = WebDriverWait(self.driver, 8).until(
